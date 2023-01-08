@@ -11,6 +11,7 @@ def main
         end
     end
 rescue EOFError => e
+    # 入力が終了した場合はプログラムを終了する.
     puts
 end
 
