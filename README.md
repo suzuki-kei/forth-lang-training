@@ -36,7 +36,6 @@ Forth では慣例的に, コメントでスタックの変化を表記します
 
 ## 必須ソフトウェア
 
- * gforth (https://gforth.org/)
  * ruby (https://www.ruby-lang.org/)
 
 ## インストール

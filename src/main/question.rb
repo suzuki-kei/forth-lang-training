@@ -1,3 +1,4 @@
+require 'forth'
 
 class Question
 
@@ -42,9 +43,9 @@ class Question
     end
 
     def execute(words)
-        IO.popen("gforth -e '#{@initial_stack} #{words} .s bye'") do |f|
-            f.readline.gsub(/^<\d+>/, '').strip
-        end
+        forth = Forth.new
+        forth.evaluate("#{@initial_stack} #{words}")
+        forth.stack.join(' ')
     end
 
 end
