@@ -41,13 +41,13 @@ class QuestionGenerator
         end
     end
 
-    def random_integer
-        (rand * 8).to_i + 1
+    def random_integer(min: 1, max: 8)
+        (rand * (max - min + 1) + min).to_i
     end
 
-    def random_integers(n)
+    def random_integers(n, min: 1, max: 8)
         n.times.map do
-            self.random_integer
+            self.random_integer(min: min, max: max)
         end
     end
 
