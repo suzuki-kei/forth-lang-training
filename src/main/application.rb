@@ -33,9 +33,7 @@ class Application
 
     def question_loop(question_generator)
         question_generator.each do |question|
-            print "#{question} => "
-            line = $stdin.readline.chomp
-            question.answer(line)
+            question.challange
         end
     rescue EOFError => e
         # 入力が終了した場合はプログラムを終了する.

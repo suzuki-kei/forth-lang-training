@@ -7,19 +7,43 @@ class Question
         @answer = answer
     end
 
-    def to_s
-        "( #{@initial_stack} -- #{@expected_stack} )"
+    def challange
+        self.print_question
+        response = self.read_response
+        self.judge(response)
+        puts
     end
 
-    def answer(words)
+    private
+
+    def print_question
+        comment = self.comment(@initial_stack, @expected_stack)
+        print "#{comment} => "
+    end
+
+    def read_response
+        $stdin.readline.chomp
+    end
+
+    def judge(response)
+        actual_stack = self.execute(response)
+
+        if actual_stack == @expected_stack
+            puts '    OK'
+        else
+            comment = self.comment("#{@initial_stack} #{response}", actual_stack)
+            puts "    NG: #{comment}"
+            puts "    answer: #{@answer}"
+        end
+    end
+
+    def comment(before_stack, after_stack)
+        "( #{before_stack} -- #{after_stack} )"
+    end
+
+    def execute(words)
         IO.popen("gforth -e '#{@initial_stack} #{words} .s bye'") do |f|
-            actual_stack = f.readline.gsub(/^<\d+>/, '').strip
-            if actual_stack == @expected_stack
-                puts '    OK'
-            else
-                puts "    NG: ( #{@initial_stack} #{words} -- #{actual_stack} )"
-                puts "    expected: #{@answer}"
-            end
+            f.readline.gsub(/^<\d+>/, '').strip
         end
     end
 
