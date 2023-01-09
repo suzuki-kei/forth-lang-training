@@ -8,7 +8,7 @@ class Question
     end
 
     def to_s
-        "(#{@initial_stack} -- #{@expected_stack})"
+        "( #{@initial_stack} -- #{@expected_stack} )"
     end
 
     def answer(words)
@@ -17,7 +17,7 @@ class Question
             if actual_stack == @expected_stack
                 puts '    OK'
             else
-                puts "    NG: (#{@initial_stack} -- #{actual_stack})"
+                puts "    NG: ( #{@initial_stack} -- #{actual_stack} )"
                 puts "    expected: #{@answer}"
             end
         end
