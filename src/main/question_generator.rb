@@ -58,7 +58,8 @@ class QuestionGenerator
                 Question.new("#{x1} #{x2}", "#{x1 + x2}", '+')
             },
             '-' => lambda {
-                x1, x2 = self.random_integers(2)
+                # 引き算の結果が負数にならないように並べ替える.
+                x1, x2 = self.random_integers(2).sort.reverse
                 Question.new("#{x1} #{x2}", "#{x1 - x2}", '-')
             },
             '*' => lambda {
