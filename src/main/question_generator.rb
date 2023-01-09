@@ -71,7 +71,8 @@ class QuestionGenerator
                 Question.new("#{x1 * x2} #{x1}", "#{x2}", '/')
             },
             'abs' => lambda {
-                x1 = -self.random_integer
+                # 絶対値を取っていることを分かりやすくするために負数にする.
+                x1 = -self.random_integer(min: 100, max: 999)
                 Question.new("#{x1}", "#{x1.abs}", 'abs')
             },
             'drop' => lambda {
@@ -83,19 +84,22 @@ class QuestionGenerator
                 Question.new("#{x1}", "#{x1} #{x1}", 'dup')
             },
             'max' => lambda {
-                x1, x2 = self.random_integers(2)
+                x1 = self.random_integer(min: 0, max: 9)
+                x2 = self.random_integer(min: 100, max: 999)
                 Question.new("#{x1} #{x2}", "#{[x1, x2].max}", 'max')
             },
             'min' => lambda {
-                x1, x2 = self.random_integers(2)
+                x1 = self.random_integer(min: 0, max: 9)
+                x2 = self.random_integer(min: 100, max: 999)
                 Question.new("#{x1} #{x2}", "#{[x1, x2].min}", 'min')
             },
             'mod' => lambda {
-                x1, x2 = self.random_integers(2)
+                x1 = self.random_integer(min: 10, max: 99)
+                x2 = self.random_integer(min: 2, max: 5)
                 Question.new("#{x1} #{x2}", "#{x1 % x2}", 'mod')
             },
             'negate' => lambda {
-                x1 = self.random_integer
+                x1 = self.random_integer(min: 100, max: 999)
                 Question.new("#{x1}", "#{-x1}", 'negate')
             },
             'nip' => lambda {
