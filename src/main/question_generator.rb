@@ -72,7 +72,7 @@ class QuestionGenerator
             },
             'abs' => lambda {
                 x1 = -self.random_integer
-                Question.new("#{x1}", "#{x1.abs}", 'swap')
+                Question.new("#{x1}", "#{x1.abs}", 'abs')
             },
             'drop' => lambda {
                 x1, x2 = self.random_integers(2)
