@@ -110,6 +110,12 @@ class QuestionGenerator
                 x1, x2 = self.random_integers(2)
                 Question.new("#{x1} #{x2}", "#{x1} #{x2} #{x1}", 'over')
             },
+            'pick' => lambda {
+                n = 5
+                xs = (1..n).to_a
+                nth = self.random_integer(min: 2, max: n-1)
+                Question.new("#{xs.join(' ')}", "#{xs.join(' ')} #{xs[-nth-1]}", "#{nth} pick")
+            },
             'rot' => lambda {
                 x1, x2, x3 = self.random_integers(3)
                 Question.new("#{x1} #{x2} #{x3}", "#{x2} #{x3} #{x1}", 'rot')
