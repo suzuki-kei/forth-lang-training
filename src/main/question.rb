@@ -17,7 +17,7 @@ class Question
             if actual_stack == @expected_stack
                 puts '    OK'
             else
-                puts "    NG: ( #{@initial_stack} -- #{actual_stack} )"
+                puts "    NG: ( #{@initial_stack} #{words} -- #{actual_stack} )"
                 puts "    expected: #{@answer}"
             end
         end

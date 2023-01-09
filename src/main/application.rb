@@ -34,7 +34,7 @@ class Application
     def question_loop(question_generator)
         question_generator.each do |question|
             print "#{question} => "
-            line = $stdin.readline
+            line = $stdin.readline.chomp
             question.answer(line)
         end
     rescue EOFError => e
