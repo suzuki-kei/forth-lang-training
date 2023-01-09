@@ -70,6 +70,46 @@ class QuestionGenerator
                 x1, x2 = self.random_integers(2)
                 Question.new("#{x1 * x2} #{x1}", "#{x2}", '/')
             },
+            'abs' => lambda {
+                x1 = -self.random_integer
+                Question.new("#{x1}", "#{x1.abs}", 'swap')
+            },
+            'drop' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{x1}", 'drop')
+            },
+            'dup' => lambda {
+                x1 = self.random_integer
+                Question.new("#{x1}", "#{x1} #{x1}", 'dup')
+            },
+            'max' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{[x1, x2].max}", 'max')
+            },
+            'min' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{[x1, x2].min}", 'min')
+            },
+            'mod' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{x1 % x2}", 'mod')
+            },
+            'negate' => lambda {
+                x1 = self.random_integer
+                Question.new("#{x1}", "#{-x1}", 'negate')
+            },
+            'nip' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{x2}", 'nip')
+            },
+            'over' => lambda {
+                x1, x2 = self.random_integers(2)
+                Question.new("#{x1} #{x2}", "#{x1} #{x2} #{x1}", 'over')
+            },
+            'rot' => lambda {
+                x1, x2, x3 = self.random_integers(3)
+                Question.new("#{x1} #{x2} #{x3}", "#{x2} #{x3} #{x1}", 'rot')
+            },
             'swap' => lambda {
                 x1, x2 = self.random_integers(2)
                 Question.new("#{x1} #{x2}", "#{x2} #{x1}", 'swap')
