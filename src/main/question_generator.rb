@@ -116,6 +116,13 @@ class QuestionGenerator
                 nth = self.random_integer(min: 2, max: n-1)
                 Question.new("#{xs.join(' ')}", "#{xs.join(' ')} #{xs[-nth-1]}", "#{nth} pick")
             },
+            'roll' => lambda {
+                n = 7
+                xs = (1..n).to_a
+                nth = self.random_integer(min: 3, max: n-1)
+                expected_stack = xs[0..-nth-2] + xs[-nth..-1] + [xs[-nth-1]]
+                Question.new("#{xs.join(' ')}", "#{expected_stack.join(' ')}", "#{nth} roll")
+            },
             'rot' => lambda {
                 x1, x2, x3 = self.random_integers(3)
                 Question.new("#{x1} #{x2} #{x3}", "#{x2} #{x3} #{x1}", 'rot')
