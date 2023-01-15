@@ -13,6 +13,8 @@ class Question
         response = self.read_response
         self.judge(response)
         puts
+    rescue ArgumentError => error
+        puts error
     end
 
     private
