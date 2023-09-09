@@ -8,9 +8,7 @@ class Forth
     end
 
     def evaluate(source)
-        source.split.each do |value|
-            self.evaluate_one(value)
-        end
+        source.split.each(&method(:evaluate_one))
     end
 
     private
