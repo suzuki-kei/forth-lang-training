@@ -9,9 +9,9 @@ class Question
     end
 
     def challange
-        self.print_question
-        response = self.read_response
-        self.judge(response)
+        print_question
+        response = read_response
+        judge(response)
         puts
     rescue ArgumentError => error
         puts error
@@ -20,7 +20,7 @@ class Question
     private
 
     def print_question
-        comment = self.comment(@initial_stack, @expected_stack)
+        comment = comment(@initial_stack, @expected_stack)
         print "#{comment} => "
     end
 
@@ -29,12 +29,12 @@ class Question
     end
 
     def judge(response)
-        actual_stack = self.execute(response)
+        actual_stack = execute(response)
 
         if actual_stack == @expected_stack
             puts '    OK'
         else
-            comment = self.comment("#{@initial_stack} #{response}", actual_stack)
+            comment = comment("#{@initial_stack} #{response}", actual_stack)
             puts "    NG: #{comment}"
             puts "    answer: #{@answer}"
         end

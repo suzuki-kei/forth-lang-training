@@ -3,9 +3,9 @@ require 'question_generator'
 class Application
 
     def main
-        mode = self.parse_arguments
+        mode = parse_arguments
         generator = QuestionGenerator.new(mode: mode)
-        self.question_loop(generator)
+        question_loop(generator)
     end
 
     private
